@@ -30,7 +30,7 @@ dependencyManagement {
 }
 
 dependencies {
-//    implementation project(path: ':common-domain', configuration: 'default')
+    implementation project(path: ':common-domain', configuration: 'default')
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
@@ -45,6 +45,9 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3:3.12.0'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     implementation 'org.springframework.data:spring-data-envers'
+
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
 
     annotationProcessor 'org.projectlombok:lombok'
 

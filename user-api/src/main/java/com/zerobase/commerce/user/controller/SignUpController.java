@@ -3,6 +3,7 @@ package com.zerobase.commerce.user.controller;
 
 import com.zerobase.commerce.user.application.SignUpApplication;
 import com.zerobase.commerce.user.domain.SignUpForm;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ public class SignUpController {
 	private final SignUpApplication signUpApplication;
 
 	@PostMapping
-	public ResponseEntity<String> customerSignUp(@RequestBody SignUpForm form) {
+	public ResponseEntity<String> customerSignUp(@RequestBody @Valid SignUpForm form) {
 		return ResponseEntity.ok(signUpApplication.customerSignUp(form));
 	}
 
