@@ -2,7 +2,7 @@ package com.zerobase.commerce.user.config.filter;
 
 import com.zerobase.commerce.domain.config.JwtAuthenticationProvider;
 import com.zerobase.commerce.domain.domain.common.UserVo;
-import com.zerobase.commerce.user.service.CustomerService;
+import com.zerobase.commerce.user.service.customer.CustomerService;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;

@@ -4,7 +4,7 @@ import com.zerobase.commerce.domain.config.JwtAuthenticationProvider;
 import com.zerobase.commerce.domain.domain.common.UserVo;
 import com.zerobase.commerce.user.domain.model.Customer;
 import com.zerobase.commerce.user.domain.model.CustomerDto;
-import com.zerobase.commerce.user.service.CustomerService;
+import com.zerobase.commerce.user.service.customer.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

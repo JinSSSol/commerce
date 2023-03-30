@@ -2,6 +2,7 @@ package com.zerobase.commerce.user.service;
 
 import com.zerobase.commerce.user.domain.SignUpForm;
 import com.zerobase.commerce.user.domain.model.Customer;
+import com.zerobase.commerce.user.service.customer.SignUpCustomerService;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
