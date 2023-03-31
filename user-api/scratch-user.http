@@ -1,0 +1,67 @@
+
+### 회원가입 ( 고객 )
+POST http://localhost:8081/signUp/customer
+Content-Type: application/json
+
+{
+  "birth": "2023-03-31",
+  "email": "string1@naver.com",
+  "name": "string",
+  "password": "string12",
+  "phone": "string"
+}
+
+
+### 이메일 인증 ( 고객 )
+GET http://localhost:8081/signUp/customer/verify?email=string1@naver.com&code=EnTeULohPP
+
+### 로그인 ( 고객 )
+POST http://localhost:8081/signIn/customer
+Content-Type: application/json
+
+{
+  "email" : "string1@naver.com",
+  "password" : "string12"
+}
+### 회원 정보 조회 ( 고객 )
+GET http://localhost:8081/customer/getInfo
+X_AUTH_TOKEN:  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1RExQV2trOVFYejFlUzY1QnBVPSIsImp0aSI6IlF0WENYOWs4RVdNeER0a0lBSmJ1MkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODAyODEyODMsImV4cCI6MTY4MDM2NzY4M30.e-gU1sYU0iX1wsjt982xOVRTNIRyGPvoXj_aKFjdK8c
+
+### 잔액 변경 ( 고객 )
+POST http://localhost:8081/customer/balance
+Content-Type: application/json
+X_AUTH_TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1RExQV2trOVFYejFlUzY1QnBVPSIsImp0aSI6IlF0WENYOWs4RVdNeER0a0lBSmJ1MkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODAyODEyODMsImV4cCI6MTY4MDM2NzY4M30.e-gU1sYU0iX1wsjt982xOVRTNIRyGPvoXj_aKFjdK8c
+
+{
+  "from": "admin",
+  "message": "충전",
+  "money" : 50000
+}
+
+######################################################
+
+
+### 회원가입 ( 셀러 )
+POST http://localhost:8081/signUp/seller
+Content-Type: application/json
+
+{
+  "birth": "2023-03-31",
+  "email": "seller@naver.com",
+  "name": "string",
+  "password": "string12",
+  "phone": "string"
+}
+
+### 이메일 인증 ( 셀러 )
+GET http://localhost:8081/signUp/seller/verify?email=seller@naver.com&code=EO8en0d6bJ
+
+
+### 로그인 ( 셀러 )
+POST http://localhost:8081/signIn/seller
+Content-Type: application/json
+
+{
+  "email" : "seller@naver.com",
+  "password" : "string12"
+}
