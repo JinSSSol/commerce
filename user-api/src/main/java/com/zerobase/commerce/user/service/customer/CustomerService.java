@@ -1,9 +1,7 @@
-package com.zerobase.commerce.user.service;
+package com.zerobase.commerce.user.service.customer;
 
 import static com.zerobase.commerce.user.exception.ErrorCode.LOGIN_CHECK_FAIL;
 import static com.zerobase.commerce.user.exception.ErrorCode.NOT_FOUND_USER;
-
-
 import com.zerobase.commerce.user.domain.model.Customer;
 import com.zerobase.commerce.user.domain.repository.CustomerRepository;
 import com.zerobase.commerce.user.exception.CustomException;

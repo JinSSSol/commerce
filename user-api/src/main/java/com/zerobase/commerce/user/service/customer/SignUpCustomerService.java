@@ -1,4 +1,4 @@
-package com.zerobase.commerce.user.service;
+package com.zerobase.commerce.user.service.customer;
 
 import com.zerobase.commerce.user.domain.SignUpForm;
 import com.zerobase.commerce.user.domain.model.Customer;
@@ -22,7 +22,7 @@ public class SignUpCustomerService {
 	}
 
 	public boolean isEmailExist(String email) {
-		return customerRepository.findByEmail(email.toLowerCase(Locale.ROOT))
+		return customerRepository.findByEmail(email)
 			.isPresent();
 	}
 
