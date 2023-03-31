@@ -32,7 +32,7 @@ public class SignUpCustomerService {
 			.orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_USER));
 		if (customer.isVerify()) {
 			throw new CustomException(ErrorCode.ALREADY_VERIFY);
-		} else if (customer.getVerificationCode().equals(code)) {
+		} else if (!customer.getVerificationCode().equals(code)) {
 			throw new CustomException(ErrorCode.WRONG_VERIFICATION);
 		} else if (customer.getVerifyExpiredAt().isBefore(LocalDateTime.now())) {
 			throw new CustomException(ErrorCode.EXPIRE_CODE);
@@ -46,7 +46,7 @@ public class SignUpCustomerService {
 			.orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_USER));
 
 		customer.setVerificationCode(verificationCode);
-		customer.setVerifyExpiredAt(LocalDateTime.now());
+		customer.setVerifyExpiredAt(LocalDateTime.now().plusDays(1));
 		return customer.getVerifyExpiredAt();
 	}
 

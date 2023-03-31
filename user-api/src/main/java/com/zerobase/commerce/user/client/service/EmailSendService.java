@@ -1,4 +1,5 @@
 package com.zerobase.commerce.user.client.service;
+
 import com.zerobase.commerce.user.client.MailgunClient;
 import com.zerobase.commerce.user.client.mailgun.SendMailForm;
 import feign.Response;

@@ -1,0 +1,13 @@
+package com.zerobase.commerce.user.config;
+
+import com.zerobase.commerce.domain.config.JwtAuthenticationProvider;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class JwtConfig {
+	@Bean
+	public JwtAuthenticationProvider jwtAuthenticationProvider() {
+		return new JwtAuthenticationProvider();
+	}
+}
