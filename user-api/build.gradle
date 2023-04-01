@@ -38,6 +38,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-devtools'
 
     compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
     compileOnly "org.springframework.boot:spring-boot-configuration-processor"
 
     runtimeOnly 'com.mysql:mysql-connector-j:8.0.32'
@@ -48,8 +49,6 @@ dependencies {
 
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
     implementation 'io.springfox:springfox-swagger-ui:3.0.0'
-
-    annotationProcessor 'org.projectlombok:lombok'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
