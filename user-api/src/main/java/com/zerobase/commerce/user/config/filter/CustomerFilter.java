@@ -25,7 +25,7 @@ public class CustomerFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 		throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
-		String token = req.getHeader("X_AUTH_TOKEN");
+		String token = req.getHeader("X-AUTH-TOKEN");
 		if (!jwtAuthenticationProvider.validateTokens(token)) {
 			throw new ServletException("Invalid Access");
 		}
