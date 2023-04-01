@@ -26,7 +26,7 @@ public class CustomerController {
 	private final CustomerBalanceService customerBalanceService;
 
 	@GetMapping("/getInfo")
-	public ResponseEntity<CustomerDto> getInfo(@RequestHeader(name = "X_AUTH_TOKEN") String token) {
+	public ResponseEntity<CustomerDto> getInfo(@RequestHeader(name = "X-AUTH-TOKEN") String token) {
 		UserVo userVo = jwtAuthenticationProvider.getUserVo(token);
 		Customer customer = customerService.findByIdAndEmail(userVo.getId(), userVo.getEmail());
 
@@ -34,7 +34,7 @@ public class CustomerController {
 	}
 
 	@PostMapping("/balance")
-	public ResponseEntity<Integer> changeBalance(@RequestHeader(name = "X_AUTH_TOKEN") String token,
+	public ResponseEntity<Integer> changeBalance(@RequestHeader(name = "X-AUTH-TOKEN") String token,
 		@RequestBody ChangeBalanceForm form) {
 
 		UserVo vo = jwtAuthenticationProvider.getUserVo(token);

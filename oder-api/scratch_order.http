@@ -1,0 +1,29 @@
+### 상품 추가
+POST http://localhost:8082/seller/product
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1RExQV2trOVFYejFlUzY1QnBVPSIsImp0aSI6IlF0WENYOWs4RVdNeER0a0lBSmJ1MkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODAzNTYzMDksImV4cCI6MTY4MDQ0MjcwOX0.3HIONMTLhofpdU1N3mVj6D4a9DrLqzEPm55SRtcIxa0
+
+
+{
+  "description": "상품 설명",
+  "items": [
+    {
+      "count": 1,
+      "name": "300",
+      "price": 100000
+    }
+  ],
+  "name": "나이키2"
+}
+
+### 상품 아이템 추가
+POST http://localhost:8082/seller/product/item
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1RExQV2trOVFYejFlUzY1QnBVPSIsImp0aSI6IlF0WENYOWs4RVdNeER0a0lBSmJ1MkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODAzNTYzMDksImV4cCI6MTY4MDQ0MjcwOX0.3HIONMTLhofpdU1N3mVj6D4a9DrLqzEPm55SRtcIxa0
+
+{
+  "productId": 3,
+  "count": 1,
+  "name": "500",
+  "price": 200000
+}
