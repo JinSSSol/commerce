@@ -40,16 +40,16 @@ public class CartApplication {
 		return cartService.addCart(customerId, form);
 	}
 
-	// 카트 메시지 조회하기 위함
-	public Cart getRefreshCart(Long customerId) {
-		return  refreshCart(cartService.getCart(customerId));
-	}
+	// refresh 카트 반환
+	// 빈 메시지 카트 저장
 	public Cart getCart(Long customerId) {
-		Cart cart = getRefreshCart(customerId);
+		Cart cart = refreshCart(cartService.getCart(customerId));
 		Cart returnCart = new Cart();
 		returnCart.setCustomerId(customerId);
 		returnCart.setProducts(cart.getProducts());
-		returnCart.setMessages(new ArrayList<>());
+		returnCart.setMessages(cart.getMessages());
+
+		cart.setMessages(new ArrayList<>());
 		cartService.putCart(customerId, cart);
 		return returnCart;
 	}
