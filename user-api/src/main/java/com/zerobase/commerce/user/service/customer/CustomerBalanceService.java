@@ -22,7 +22,7 @@ public class CustomerBalanceService {
 	@Transactional(noRollbackFor = {CustomException.class})
 	public CustomerBalanceHistory changeBalance(Long customerId, ChangeBalanceForm form) throws CustomException {
 		CustomerBalanceHistory customerBalanceHistory =
-			customerBalanceHistoryRepository.findFirstByCustomer_IdOrderByIdDesc(customerId)
+			customerBalanceHistoryRepository.findFirstByCustomerIdOrderByIdDesc(customerId)
 				.orElse(CustomerBalanceHistory.builder()
 					.changeMoney(0)
 					.currentMoney(0)
@@ -41,6 +41,7 @@ public class CustomerBalanceService {
 			.customer(customerBalanceHistory.getCustomer())
 			.build();
 		customerBalanceHistory.getCustomer().setBalance(customerBalanceHistory.getCurrentMoney());
+		customerBalanceHistoryRepository.save(customerBalanceHistory);
 		return customerBalanceHistory;
 	}
 

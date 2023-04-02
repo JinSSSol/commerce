@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface CustomerBalanceHistoryRepository extends
 	JpaRepository<CustomerBalanceHistory, Long> {
 
-	Optional<CustomerBalanceHistory> findFirstByCustomer_IdOrderByIdDesc(Long customerId);
+	Optional<CustomerBalanceHistory> findFirstByCustomerIdOrderByIdDesc(Long customerId);
 }
