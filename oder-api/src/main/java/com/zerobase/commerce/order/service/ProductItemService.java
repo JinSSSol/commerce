@@ -6,8 +6,8 @@ import static com.zerobase.commerce.order.exception.ErrorCode.SAME_ITEM_NAME;
 
 import com.zerobase.commerce.order.domain.model.Product;
 import com.zerobase.commerce.order.domain.model.ProductItem;
-import com.zerobase.commerce.order.domain.model.product.AddProductItemForm;
-import com.zerobase.commerce.order.domain.model.product.UpdateProductItemForm;
+import com.zerobase.commerce.order.domain.product.AddProductItemForm;
+import com.zerobase.commerce.order.domain.product.UpdateProductItemForm;
 import com.zerobase.commerce.order.domain.repository.ProductItemRepository;
 import com.zerobase.commerce.order.domain.repository.ProductRepository;
 import com.zerobase.commerce.order.exception.CustomException;

@@ -1,4 +1,4 @@
-package com.zerobase.commerce.order.domain.model.product;
+package com.zerobase.commerce.order.domain.product;
 
 import com.zerobase.commerce.order.domain.model.Product;
 import java.util.List;

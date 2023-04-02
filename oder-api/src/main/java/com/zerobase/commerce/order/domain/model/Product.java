@@ -1,6 +1,6 @@
 package com.zerobase.commerce.order.domain.model;
 
-import com.zerobase.commerce.order.domain.model.product.AddProductForm;
+import com.zerobase.commerce.order.domain.product.AddProductForm;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

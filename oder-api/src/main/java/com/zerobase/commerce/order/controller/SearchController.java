@@ -1,7 +1,7 @@
 package com.zerobase.commerce.order.controller;
 
 import com.zerobase.commerce.domain.config.JwtAuthenticationProvider;
-import com.zerobase.commerce.order.domain.model.product.ProductDto;
+import com.zerobase.commerce.order.domain.product.ProductDto;
 import com.zerobase.commerce.order.service.ProductSearchService;
 import java.util.List;
 import java.util.stream.Collectors;
