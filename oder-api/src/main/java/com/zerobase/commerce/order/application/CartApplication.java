@@ -40,6 +40,11 @@ public class CartApplication {
 		return cartService.addCart(customerId, form);
 	}
 
+	public Cart updateCart(Long customerId, Cart cart) {
+		cartService.putCart(customerId, cart);
+		return getCart(customerId);
+	}
+
 	// refresh 카트 반환
 	// 빈 메시지 카트 저장
 	public Cart getCart(Long customerId) {
