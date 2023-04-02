@@ -51,13 +51,13 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1R
 ### 상품 아이템 수정
 PUT http://localhost:8082/seller/product/item
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1RExQV2trOVFYejFlUzY1QnBVPSIsImp0aSI6IlF0WENYOWs4RVdNeER0a0lBSmJ1MkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODAzNTYzMDksImV4cCI6MTY4MDQ0MjcwOX0.3HIONMTLhofpdU1N3mVj6D4a9DrLqzEPm55SRtcIxa0
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1RExQV2trOVFYejFlUzY1QnBVPSIsImp0aSI6IlF0WENYOWs4RVdNeER0a0lBSmJ1MkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODA0NTY2MDUsImV4cCI6MTY4MDU0MzAwNX0.2Q227Bplku6v-A3DodETNsI1jfuTZOt6c2ELk1T92p8
 
 {
   "id": 17,
-  "count": 2,
+  "count": 10,
   "name": "50000",
-  "price": 200000
+  "price": 2000
 }
 
 ### 상품 삭제
@@ -79,7 +79,7 @@ GET http://localhost:8082/search/product/detail?productId=9
 ### 카트 추가
 POST http://localhost:8082/customer/cart
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1RExQV2trOVFYejFlUzY1QnBVPSIsImp0aSI6IlF0WENYOWs4RVdNeER0a0lBSmJ1MkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODAzNTYzMDksImV4cCI6MTY4MDQ0MjcwOX0.3HIONMTLhofpdU1N3mVj6D4a9DrLqzEPm55SRtcIxa0
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1RExQV2trOVFYejFlUzY1QnBVPSIsImp0aSI6IlF0WENYOWs4RVdNeER0a0lBSmJ1MkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODA0NTY2MDUsImV4cCI6MTY4MDU0MzAwNX0.2Q227Bplku6v-A3DodETNsI1jfuTZOt6c2ELk1T92p8
 
 {
   "description": "상품 설명 변경",
@@ -87,11 +87,43 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1R
   "items": [
     {
       "id": 17,
-      "count": 3,
+      "count": 1,
       "name": "400",
-      "price": 200000
+      "price": 2000
     }
   ],
-  "name": "나이키3",
+  "name": "나이키2",
   "sellerId": 25
+}
+
+### 카트 조회
+GET http://localhost:8082/customer/cart
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1RExQV2trOVFYejFlUzY1QnBVPSIsImp0aSI6IlF0WENYOWs4RVdNeER0a0lBSmJ1MkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODA0NTY2MDUsImV4cCI6MTY4MDU0MzAwNX0.2Q227Bplku6v-A3DodETNsI1jfuTZOt6c2ELk1T92p8
+
+### 카트 주문
+POST http://localhost:8082/customer/cart/order
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1RExQV2trOVFYejFlUzY1QnBVPSIsImp0aSI6IlF0WENYOWs4RVdNeER0a0lBSmJ1MkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODA0NTY2MDUsImV4cCI6MTY4MDU0MzAwNX0.2Q227Bplku6v-A3DodETNsI1jfuTZOt6c2ELk1T92p8
+
+
+{
+  "customerId": 25,
+  "products": [
+    {
+      "id": 9,
+      "sellerId": 25,
+      "name": "나이키2",
+      "description": "상품 설명 변경",
+      "items": [
+        {
+          "id": 17,
+          "name": "400",
+          "count": 3,
+          "price": 2000
+        }
+      ]
+    }
+  ],
+  "messages": []
 }
