@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import com.zerobase.commerce.order.domain.model.Product;
-import com.zerobase.commerce.order.domain.model.product.AddProductForm;
-import com.zerobase.commerce.order.domain.model.product.AddProductItemForm;
+import com.zerobase.commerce.order.domain.product.AddProductForm;
+import com.zerobase.commerce.order.domain.product.AddProductItemForm;
 import com.zerobase.commerce.order.domain.repository.ProductRepository;
 import java.util.ArrayList;
 import java.util.List;

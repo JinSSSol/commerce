@@ -1,4 +1,4 @@
-package com.zerobase.commerce.order.domain.model.product;
+package com.zerobase.commerce.order.domain.product;
 
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -12,10 +12,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateProductForm {
-	private Long id;
+public class AddProductForm {
 	private String name;
 	private String description;
-	private List<UpdateProductItemForm> items;
+	private List<AddProductItemForm> items;
 
 }

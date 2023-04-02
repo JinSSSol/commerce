@@ -13,7 +13,7 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1R
       "price": 100000
     }
   ],
-  "name": "나이키2"
+  "name": "나이키3"
 }
 
 ### 상품 아이템 추가
@@ -22,7 +22,7 @@ Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1RExQV2trOVFYejFlUzY1QnBVPSIsImp0aSI6IlF0WENYOWs4RVdNeER0a0lBSmJ1MkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODAzNTYzMDksImV4cCI6MTY4MDQ0MjcwOX0.3HIONMTLhofpdU1N3mVj6D4a9DrLqzEPm55SRtcIxa0
 
 {
-  "productId": 8,
+  "productId": 9,
   "count": 1,
   "name": "50",
   "price": 200000
@@ -54,8 +54,8 @@ Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1RExQV2trOVFYejFlUzY1QnBVPSIsImp0aSI6IlF0WENYOWs4RVdNeER0a0lBSmJ1MkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODAzNTYzMDksImV4cCI6MTY4MDQ0MjcwOX0.3HIONMTLhofpdU1N3mVj6D4a9DrLqzEPm55SRtcIxa0
 
 {
-  "id": 15,
-  "count": 100,
+  "id": 17,
+  "count": 2,
   "name": "50000",
   "price": 200000
 }
@@ -74,4 +74,24 @@ GET http://localhost:8082/search/product?name=나이키
 Content-Type: application/json
 
 ### 상품 상세정보
-GET http://localhost:8082/search/product/detail?productId=2
+GET http://localhost:8082/search/product/detail?productId=9
+
+### 카트 추가
+POST http://localhost:8082/customer/cart
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1RExQV2trOVFYejFlUzY1QnBVPSIsImp0aSI6IlF0WENYOWs4RVdNeER0a0lBSmJ1MkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODAzNTYzMDksImV4cCI6MTY4MDQ0MjcwOX0.3HIONMTLhofpdU1N3mVj6D4a9DrLqzEPm55SRtcIxa0
+
+{
+  "description": "상품 설명 변경",
+  "id": 9,
+  "items": [
+    {
+      "id": 17,
+      "count": 3,
+      "name": "400",
+      "price": 200000
+    }
+  ],
+  "name": "나이키3",
+  "sellerId": 25
+}

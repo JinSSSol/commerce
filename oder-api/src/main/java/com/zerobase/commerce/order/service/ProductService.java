@@ -4,9 +4,9 @@ import static com.zerobase.commerce.order.exception.ErrorCode.NOT_FOUND_ITEM;
 
 import com.zerobase.commerce.order.domain.model.Product;
 import com.zerobase.commerce.order.domain.model.ProductItem;
-import com.zerobase.commerce.order.domain.model.product.AddProductForm;
-import com.zerobase.commerce.order.domain.model.product.UpdateProductForm;
-import com.zerobase.commerce.order.domain.model.product.UpdateProductItemForm;
+import com.zerobase.commerce.order.domain.product.AddProductForm;
+import com.zerobase.commerce.order.domain.product.UpdateProductForm;
+import com.zerobase.commerce.order.domain.product.UpdateProductItemForm;
 import com.zerobase.commerce.order.domain.repository.ProductRepository;
 import com.zerobase.commerce.order.exception.CustomException;
 import com.zerobase.commerce.order.exception.ErrorCode;
