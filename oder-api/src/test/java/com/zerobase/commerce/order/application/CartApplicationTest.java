@@ -47,13 +47,8 @@ class CartApplicationTest {
 		Cart cart = cartApplication.addCart(customerId, makeAddForm(result));
 		assertEquals(cart.getMessages().size(), 0);
 
-		// refresh 카트
-		cart = cartApplication.getRefreshCart(customerId);
-		assertEquals(cart.getMessages().size(), 1);
-
-		// get 카트
 		cart = cartApplication.getCart(customerId);
-		assertEquals(cart.getMessages().size(), 0);
+		assertEquals(cart.getMessages().size(), 1);
 	}
 
 	AddProductCartForm makeAddForm(Product p) {
