@@ -1,6 +1,7 @@
 package com.zerobase.commerce.order.application;
 
 import static com.zerobase.commerce.order.exception.ErrorCode.ORDER_FAIL_CHECK_CART;
+import static com.zerobase.commerce.order.exception.ErrorCode.ORDER_FAIL_NO_ITEM;
 import static com.zerobase.commerce.order.exception.ErrorCode.ORDER_FAIL_NO_MONEY;
 
 import com.zerobase.commerce.order.client.MailgunClient;
@@ -10,6 +11,7 @@ import com.zerobase.commerce.order.client.user.ChangeBalanceForm;
 import com.zerobase.commerce.order.client.user.CustomerDto;
 import com.zerobase.commerce.order.domain.model.ProductItem;
 import com.zerobase.commerce.order.domain.redis.Cart;
+import com.zerobase.commerce.order.domain.redis.Cart.Product;
 import com.zerobase.commerce.order.exception.CustomException;
 import com.zerobase.commerce.order.service.ProductItemService;
 import java.util.stream.IntStream;
@@ -33,6 +35,10 @@ public class OrderApplication {
 			throw new CustomException(ORDER_FAIL_CHECK_CART);
 		}
 
+		if (orderCart.getProducts().stream().anyMatch(product -> product.getItems().isEmpty())) {
+			throw new CustomException(ORDER_FAIL_NO_ITEM);
+		}
+
 		CustomerDto customerDto = userClient.getCustomerInfo(token).getBody();
 
 		int totalPrice = getTotalPrice(cart);
@@ -49,31 +55,36 @@ public class OrderApplication {
 
 		for (Cart.Product cartProduct : orderCart.getProducts()) {
 			for (Cart.ProductItem cartItem : cartProduct.getItems()) {
-				ProductItem productItem = productItemService.getProductItem(cartItem.getId());
-				productItem.setCount(productItem.getCount() - cartItem.getCount());
+				if (cartItem.getIsOrder()) {
+					ProductItem productItem = productItemService.getProductItem(cartItem.getId());
+					productItem.setCount(productItem.getCount() - cartItem.getCount());
+				}
 			}
 		}
-
 		sendOrderMail(token, orderCart);
 	}
 
 	private Integer getTotalPrice(Cart cart) {
 
 		return cart.getProducts().stream().flatMapToInt(
-			product -> product.getItems().stream().flatMapToInt(
-				productItem -> IntStream.of(productItem.getPrice() * productItem.getCount())))
+				product -> product.getItems()
+					.stream().filter(Cart.ProductItem::getIsOrder).
+					flatMapToInt(productItem -> IntStream.of(productItem.getPrice() * productItem.getCount())))
 			.sum();
 	}
 
 	public void sendOrderMail(String token, Cart orderCart) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("제로베이스 구매가 완료되었습니다. 구매정보를 확인하세요!\n");
+
 		for (Cart.Product product : orderCart.getProducts()) {
 			builder.append("상풍명: " + product.getName() + "\n");
 
 			for (Cart.ProductItem item : product.getItems()) {
-				builder.append("옵션명: " + item.getName() + " ");
-				builder.append("수량: " + item.getCount() + "\n");
+				if (item.getIsOrder()) {
+					builder.append("옵션명: " + item.getName() + " ");
+					builder.append("수량: " + item.getCount() + "\n");
+				}
 			}
 			builder.append("\n\n");
 		}

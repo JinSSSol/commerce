@@ -59,6 +59,7 @@ public class Cart {
 		private String name;
 		private Integer count;
 		private Integer price;
+		private Boolean isOrder =false;
 
 		public static ProductItem from(AddProductCartForm.ProductItem form) {
 			return ProductItem.builder()
@@ -66,6 +67,7 @@ public class Cart {
 				.name(form.getName())
 				.count(form.getCount())
 				.price(form.getPrice())
+				.isOrder(form.getIsOrder())
 				.build();
 		}
 	}
