@@ -1,4 +1,4 @@
-package com.zerobase.commerce.user.config;
+package com.zerobase.commerce.order.config;
 
 import feign.auth.BasicAuthRequestInterceptor;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,6 +18,7 @@ public class FeignConfig {
 	@Bean
 	public BasicAuthRequestInterceptor basicAuthRequestInterceptor() {
 		return new BasicAuthRequestInterceptor("api", mailgunKey);
+
 	}
 
 }
