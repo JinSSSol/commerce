@@ -26,5 +26,6 @@ public class AddProductCartForm {
 		private String name;
 		private Integer count;
 		private Integer price;
+		private Boolean isOrder;
 	}
 }

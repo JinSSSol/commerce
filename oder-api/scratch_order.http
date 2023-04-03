@@ -54,10 +54,10 @@ Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1RExQV2trOVFYejFlUzY1QnBVPSIsImp0aSI6IlF0WENYOWs4RVdNeER0a0lBSmJ1MkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODA0NTY2MDUsImV4cCI6MTY4MDU0MzAwNX0.2Q227Bplku6v-A3DodETNsI1jfuTZOt6c2ELk1T92p8
 
 {
-  "id": 17,
+  "id": 16,
   "count": 10,
-  "name": "50000",
-  "price": 2000
+  "name": "300",
+  "price": 100000
 }
 
 ### 상품 삭제
@@ -79,48 +79,64 @@ GET http://localhost:8082/search/product/detail?productId=9
 ### 카트 추가
 POST http://localhost:8082/customer/cart
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1RExQV2trOVFYejFlUzY1QnBVPSIsImp0aSI6IlF0WENYOWs4RVdNeER0a0lBSmJ1MkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODA0NTY2MDUsImV4cCI6MTY4MDU0MzAwNX0.2Q227Bplku6v-A3DodETNsI1jfuTZOt6c2ELk1T92p8
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoTzVyT1owR0lGWEJoY1l3a3MxOU8yMnFqcVpnMUJlQ2RuQWxJTnBmK2l3PSIsImp0aSI6IlFXVGZFckVTSnZKRFJ3MjAvUWtoQ2c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODA1MDg3MzMsImV4cCI6MTY4MDU5NTEzM30.hTapKyM3xcc070nVQxU9Uwowd7GHW7c4roQXwMWjJys
 
 {
-  "description": "상품 설명 변경",
+  "description": "유저 등록",
   "id": 9,
   "items": [
     {
-      "id": 17,
+      "id": 16,
+      "name": "300",
+      "price": 100000,
       "count": 1,
-      "name": "400",
-      "price": 2000
+      "isOrder": false
+    },
+    {
+      "id": 17,
+      "name": "500000",
+      "price": 2000,
+      "count": 2,
+      "isOrder": true
     }
   ],
-  "name": "나이키2",
+  "name": "나이키3",
   "sellerId": 25
 }
 
 ### 카트 조회
 GET http://localhost:8082/customer/cart
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1RExQV2trOVFYejFlUzY1QnBVPSIsImp0aSI6IlF0WENYOWs4RVdNeER0a0lBSmJ1MkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODA0NTY2MDUsImV4cCI6MTY4MDU0MzAwNX0.2Q227Bplku6v-A3DodETNsI1jfuTZOt6c2ELk1T92p8
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoTzVyT1owR0lGWEJoY1l3a3MxOU8yMnFqcVpnMUJlQ2RuQWxJTnBmK2l3PSIsImp0aSI6IlFXVGZFckVTSnZKRFJ3MjAvUWtoQ2c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODA1MDg3MzMsImV4cCI6MTY4MDU5NTEzM30.hTapKyM3xcc070nVQxU9Uwowd7GHW7c4roQXwMWjJys
 
 ### 카트 주문
 POST http://localhost:8082/customer/cart/order
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJIYnpVcjZ3NS84OVk3dlZhWW5IVWI1Ulk1RExQV2trOVFYejFlUzY1QnBVPSIsImp0aSI6IlF0WENYOWs4RVdNeER0a0lBSmJ1MkE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODA0NTY2MDUsImV4cCI6MTY4MDU0MzAwNX0.2Q227Bplku6v-A3DodETNsI1jfuTZOt6c2ELk1T92p8
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoTzVyT1owR0lGWEJoY1l3a3MxOU8yMnFqcVpnMUJlQ2RuQWxJTnBmK2l3PSIsImp0aSI6IlFXVGZFckVTSnZKRFJ3MjAvUWtoQ2c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODA1MDg3MzMsImV4cCI6MTY4MDU5NTEzM30.hTapKyM3xcc070nVQxU9Uwowd7GHW7c4roQXwMWjJys
 
 
 {
-  "customerId": 25,
+  "customerId": 28,
   "products": [
     {
       "id": 9,
       "sellerId": 25,
-      "name": "나이키2",
-      "description": "상품 설명 변경",
+      "name": "나이키3",
+      "description": "유저 등록",
       "items": [
         {
+          "id": 16,
+          "name": "300",
+          "count": 1,
+          "price": 100000,
+          "isOrder": false
+        },
+        {
           "id": 17,
-          "name": "400",
-          "count": 3,
-          "price": 2000
+          "name": "500000",
+          "count": 2,
+          "price": 2000,
+          "isOrder": true
         }
       ]
     }
