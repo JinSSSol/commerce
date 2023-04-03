@@ -3,13 +3,14 @@ package com.zerobase.commerce.order.application;
 import static com.zerobase.commerce.order.exception.ErrorCode.ORDER_FAIL_CHECK_CART;
 import static com.zerobase.commerce.order.exception.ErrorCode.ORDER_FAIL_NO_MONEY;
 
+import com.zerobase.commerce.order.client.MailgunClient;
 import com.zerobase.commerce.order.client.UserClient;
+import com.zerobase.commerce.order.client.mailgun.SendMailForm;
 import com.zerobase.commerce.order.client.user.ChangeBalanceForm;
 import com.zerobase.commerce.order.client.user.CustomerDto;
 import com.zerobase.commerce.order.domain.model.ProductItem;
 import com.zerobase.commerce.order.domain.redis.Cart;
 import com.zerobase.commerce.order.exception.CustomException;
-import com.zerobase.commerce.order.exception.ErrorCode;
 import com.zerobase.commerce.order.service.ProductItemService;
 import java.util.stream.IntStream;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ public class OrderApplication {
 
 	private final CartApplication cartApplication;
 	private final UserClient userClient;
+	private final MailgunClient mailgunClient;
 	private final ProductItemService productItemService;
 
 	@Transactional
@@ -51,6 +53,8 @@ public class OrderApplication {
 				productItem.setCount(productItem.getCount() - cartItem.getCount());
 			}
 		}
+
+		sendOrderMail(token, orderCart);
 	}
 
 	private Integer getTotalPrice(Cart cart) {
@@ -59,5 +63,30 @@ public class OrderApplication {
 			product -> product.getItems().stream().flatMapToInt(
 				productItem -> IntStream.of(productItem.getPrice() * productItem.getCount())))
 			.sum();
+	}
+
+	public void sendOrderMail(String token, Cart orderCart) {
+		StringBuilder builder = new StringBuilder();
+		builder.append("제로베이스 구매가 완료되었습니다. 구매정보를 확인하세요!\n");
+		for (Cart.Product product : orderCart.getProducts()) {
+			builder.append("상풍명: " + product.getName() + "\n");
+
+			for (Cart.ProductItem item : product.getItems()) {
+				builder.append("옵션명: " + item.getName() + " ");
+				builder.append("수량: " + item.getCount() + "\n");
+			}
+			builder.append("\n\n");
+		}
+
+		String message = builder.toString();
+
+		SendMailForm form = SendMailForm.builder()
+			.from("Excited User <mailgun@sandboxc062a3d34f4a4aaf96a13a31edb17caa.mailgun.org>")
+			.to(userClient.getCustomerInfo(token).getBody().getEmail())
+			.subject("제로베이스 결제 완료 !")
+			.text(message)
+			.build();
+
+		mailgunClient.sendEmail(form);
 	}
 }
